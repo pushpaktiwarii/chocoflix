@@ -4,15 +4,17 @@ import ProfileGate from '../components/ProfileGate';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Row from '../components/Row';
+import DetailModal from '../components/DetailModal';
 import { profile, heroContent, rows } from '../data/content';
 
 export default function Home() {
     const [hasEntered, setHasEntered] = useState(false);
+    const [showDetailModal, setShowDetailModal] = useState(false);
 
     return (
         <>
             <Head>
-                <title>{profile.name} - Personal Portfolio</title>
+                <title>{profile.name} - Your Memories, Now Streaming!</title>
                 <meta name="description" content="A cinematic portfolio experience" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
@@ -22,7 +24,10 @@ export default function Home() {
             ) : (
                 <main>
                     <Navbar />
-                    <Hero content={heroContent} />
+                    <Hero
+                        content={heroContent}
+                        onMoreInfoClick={() => setShowDetailModal(true)}
+                    />
 
                     <div className="rows-container">
                         {rows.map((row) => (
@@ -34,6 +39,10 @@ export default function Home() {
                             />
                         ))}
                     </div>
+
+                    {showDetailModal && (
+                        <DetailModal onClose={() => setShowDetailModal(false)} />
+                    )}
 
                     <style jsx>{`
             .rows-container {

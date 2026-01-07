@@ -1,4 +1,4 @@
-export default function Hero({ content }) {
+export default function Hero({ content, onMoreInfoClick }) {
   return (
     <header className="hero" style={{
       backgroundImage: `url("${content.image}")`
@@ -7,15 +7,15 @@ export default function Hero({ content }) {
         <h1 className="hero-title">{content.title}</h1>
 
         <div className="meta-data">
-          <span className="match-score">98% Match</span>
-          <span className="year">2026</span>
-          <span className="maturity-rating">UA 18+</span>
-          <span className="seasons">1 Season</span>
+          <span className="match-score">{content.match}</span>
+          <span className="year">{content.year}</span>
+          <span className="maturity-rating">{content.maturity}</span>
+          <span className="seasons">{content.duration}</span>
         </div>
 
         <div className="top-10-badge">
           <span className="top-10-icon">TOP 10</span>
-          <span className="top-10-text">#1 in Movies Today</span>
+          <span className="top-10-text">{content.badge}</span>
         </div>
 
         <p className="hero-desc">{content.description}</p>
@@ -27,7 +27,7 @@ export default function Hero({ content }) {
             </svg>
             Play
           </button>
-          <button className="btn btn-secondary">
+          <button className="btn btn-secondary" onClick={onMoreInfoClick}>
             <svg viewBox="0 0 24 24" fill="currentColor" className="icon-info">
               <path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8 8 8z" />
             </svg>
