@@ -14,8 +14,8 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>{profile.name} - Your Memories, Now Streaming!</title>
-                <meta name="description" content="A cinematic portfolio experience" />
+                <title>{`${profile.name} - Your Memories, Now Streaming!`}</title>
+                <meta name="description" content="A Collection of Our Masti" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
