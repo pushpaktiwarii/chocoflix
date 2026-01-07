@@ -1,0 +1,51 @@
+:root {
+  --bg-main: #141414;
+  --bg-card: #2f2f2f;
+  --text-white: #ffffff;
+  --text-gray: #b3b3b3;
+  --primary: #E50914;
+  --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+html,
+body {
+  background-color: var(--bg-main);
+  overscroll-behavior-y: none;
+  /* Prevent bounce */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: var(--text-white);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 500;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Scrollbar Hiding */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
