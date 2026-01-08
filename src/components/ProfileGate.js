@@ -13,7 +13,7 @@ export default function ProfileGate({ onEnter, profile }) {
 
   const handleUnlock = (e) => {
     e.preventDefault();
-    if (pin === '2026') {
+    if (pin === 'sukudkutta') {
       setIsEntering(true);
       setTimeout(() => {
         onEnter();
