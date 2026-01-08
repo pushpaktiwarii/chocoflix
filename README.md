@@ -4,15 +4,18 @@
 
 ## Features
 
-- **Immersive Hero Banner:** Dynamic background with "100% Match" and top-tier metadata.
+- **Profile Gate & Security:** "Who's watching?" style profile selection with a Netflix-inspired PIN protection screen (Single input, visibility toggle, dark mode).
+- **Immersive Hero Banner:** Dynamic background with "100% Match" and top-tier metadata, featuring a "Play" button that launches the first memory.
 - **"To My People" Collection:** A curated list of memories presented as a clean, text-first playlist.
-- **Detail Modal:** A Netflix-style popup for deep-diving into memory details (Coming Soon).
+- **Video Playback:** Seamless video streaming powered by **Mux**, with a custom fullscreen player experience.
+- **Detail Modal:** A premium popup for deep-diving into memory details and launching episodes.
 - **Responsive Design:** Optimized for both desktop and mobile viewing.
 
 ## Tech Stack
 
 - **Framework:** Next.js (React)
 - **Styling:** CSS Modules & Styled JSX
+- **Video:** Mux Video (via `@mux/mux-player-react`)
 - **Deployment:** Ready for Netlify / Vercel
 
 ## Getting Started
