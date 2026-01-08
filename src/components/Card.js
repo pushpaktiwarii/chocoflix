@@ -1,22 +1,57 @@
-export default function Card({ item }) {
+import { useState } from 'react';
+import MuxPlayer from '@mux/mux-player-react';
+
+export default function Card({ item, onClick }) {
+  const [isHovered, setIsHovered] = useState(false);
   // Fallback data
   const matchScore = item.match || "98% Match";
   const tag = item.tag || "Nostalgia";
 
+  const muxThumbnail = item.playbackId
+    ? `https://image.mux.com/${item.playbackId}/thumbnail.png?width=400&height=560&fit_mode=crop`
+    : null;
+  const displayImage = item.image || muxThumbnail;
+
   return (
-    <div className="card-container">
+    <div
+      className="card-container"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={() => onClick && onClick(item)}
+    >
       <div className="card">
         <div className="image-wrapper">
-          {item.image ? (
-            <img
-              src={item.image}
-              alt={item.title}
-              className="card-image"
+          {isHovered && item.playbackId ? (
+            <MuxPlayer
+              playbackId={item.playbackId}
+              streamType="on-demand"
+              autoPlay
+              muted
+              loop
+              controls={false} // Clean hover, no controls
+              style={{
+                height: '100%',
+                width: '100%',
+                '--media-object-fit': 'cover',
+                '--media-object-position': 'center',
+                '--controls': 'none',
+                '--media-control-bar-display': 'none',
+                '--media-center-play-button-display': 'none',
+                pointerEvents: 'none', // Ensure clicks go to card
+              }}
             />
           ) : (
-            <div className="no-image-placeholder">
-              <span className="placeholder-title">{item.title}</span>
-            </div>
+            displayImage ? (
+              <img
+                src={displayImage}
+                alt={item.title}
+                className="card-image"
+              />
+            ) : (
+              <div className="no-image-placeholder">
+                <span className="placeholder-title">{item.title}</span>
+              </div>
+            )
           )}
         </div>
 

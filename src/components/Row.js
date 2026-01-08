@@ -1,12 +1,17 @@
 import Card from './Card';
 
-export default function Row({ title, items, isLargeRow }) {
+export default function Row({ title, items, isLargeRow, onCardClick }) {
   return (
     <div className="row">
       <h2 className="row-title">{title}</h2>
       <div className="row-posters no-scrollbar">
-        {items.map(item => (
-          <Card key={item.id} item={item} isLarge={isLargeRow} />
+        {items.map((item, index) => (
+          <Card
+            key={item.id}
+            item={item}
+            isLarge={isLargeRow}
+            onClick={() => onCardClick(items, index)}
+          />
         ))}
       </div>
 

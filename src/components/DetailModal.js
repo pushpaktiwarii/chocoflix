@@ -1,6 +1,6 @@
 import { rows, heroContent } from '../data/content';
 
-export default function DetailModal({ onClose }) {
+export default function DetailModal({ onClose, onPlay }) {
     // Use the "To my future Kids" row items as the episodes list
     // In a real app, you might pass specific data or fetch it
     const episodes = rows[0]?.items || [];
@@ -19,7 +19,7 @@ export default function DetailModal({ onClose }) {
                     <div className="header-content">
                         <h1>{heroContent.title}</h1>
                         <div className="header-buttons">
-                            <button className="play-btn">
+                            <button className="play-btn" onClick={onPlay}>
                                 <span className="btn-icon">▶</span> Play
                             </button>
                             <button className="icon-btn" title="Add to My List">+</button>
@@ -59,21 +59,24 @@ export default function DetailModal({ onClose }) {
                     <div className="episodes-section">
                         <h3>Episodes</h3>
                         <div className="episodes-list">
-                            {episodes.map((ep, index) => (
-                                <div key={ep.id} className="episode-item">
-                                    <div className="ep-index">{index + 1}</div>
-                                    <div className="ep-preview">
-                                        <img src={ep.image} alt={ep.title} />
-                                    </div>
-                                    <div className="ep-info">
-                                        <div className="ep-header">
-                                            <h4>{ep.title}</h4>
-                                            <span className="ep-duration">{ep.duration}</span>
+                            {episodes.map((ep, index) => {
+                                const epImage = ep.image || (ep.playbackId ? `https://image.mux.com/${ep.playbackId}/thumbnail.png?width=260&height=146&fit_mode=crop` : null);
+                                return (
+                                    <div key={ep.id} className="episode-item">
+                                        <div className="ep-index">{index + 1}</div>
+                                        <div className="ep-preview">
+                                            {epImage ? <img src={epImage} alt={ep.title} /> : null}
                                         </div>
-                                        <p className="ep-desc">{ep.description}</p>
+                                        <div className="ep-info">
+                                            <div className="ep-header">
+                                                <h4>{ep.title}</h4>
+                                                <span className="ep-duration">{ep.duration}</span>
+                                            </div>
+                                            <p className="ep-desc">{ep.description}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </div>
                 </div>

@@ -5,11 +5,25 @@ import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Row from '../components/Row';
 import DetailModal from '../components/DetailModal';
+import VideoPlayerModal from '../components/VideoPlayerModal';
 import { profile, heroContent, rows } from '../data/content';
 
 export default function Home() {
     const [hasEntered, setHasEntered] = useState(false);
     const [showDetailModal, setShowDetailModal] = useState(false);
+    const [playerState, setPlayerState] = useState({ isOpen: false, items: [], initialIndex: 0 });
+
+    const handleCardClick = (items, index) => {
+        setPlayerState({ isOpen: true, items, initialIndex: index });
+    };
+
+    const handleHeroPlay = () => {
+        // Play the first episode (index 0) of the first row
+        const firstRowItems = rows[0]?.items || [];
+        if (firstRowItems.length > 0) {
+            setPlayerState({ isOpen: true, items: firstRowItems, initialIndex: 0 });
+        }
+    };
 
     return (
         <>
@@ -24,9 +38,11 @@ export default function Home() {
             ) : (
                 <main>
                     <Navbar />
+                    <Navbar />
                     <Hero
                         content={heroContent}
                         onMoreInfoClick={() => setShowDetailModal(true)}
+                        onPlay={handleHeroPlay}
                     />
 
                     <div className="rows-container">
@@ -36,12 +52,24 @@ export default function Home() {
                                 title={row.title}
                                 items={row.items}
                                 isLargeRow={row.type === 'wide'}
+                                onCardClick={handleCardClick}
                             />
                         ))}
                     </div>
 
                     {showDetailModal && (
-                        <DetailModal onClose={() => setShowDetailModal(false)} />
+                        <DetailModal
+                            onClose={() => setShowDetailModal(false)}
+                            onPlay={handleHeroPlay}
+                        />
+                    )}
+
+                    {playerState.isOpen && (
+                        <VideoPlayerModal
+                            items={playerState.items}
+                            initialIndex={playerState.initialIndex}
+                            onClose={() => setPlayerState({ ...playerState, isOpen: false })}
+                        />
                     )}
 
                     <style jsx>{`

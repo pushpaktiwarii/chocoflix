@@ -1,4 +1,4 @@
-export default function Hero({ content, onMoreInfoClick }) {
+export default function Hero({ content, onMoreInfoClick, onPlay }) {
   return (
     <header className="hero" style={{
       backgroundImage: `url("${content.image}")`
@@ -21,7 +21,7 @@ export default function Hero({ content, onMoreInfoClick }) {
         <p className="hero-desc">{content.description}</p>
 
         <div className="hero-btns">
-          <button className="btn btn-primary">
+          <button className="btn btn-primary" onClick={onPlay}>
             <svg viewBox="0 0 24 24" fill="currentColor" className="icon-play">
               <path d="M5 3l14 9-14 9V3z" />
             </svg>
