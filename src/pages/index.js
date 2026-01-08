@@ -30,7 +30,7 @@ export default function Home() {
             <Head>
                 <title>{`${profile.name} - Your Memories, Now Streaming!`}</title>
                 <meta name="description" content="A Collection of Our Masti" />
-                <link rel="icon" href="/favicon.ico" />
+
             </Head>
 
             {!hasEntered ? (
