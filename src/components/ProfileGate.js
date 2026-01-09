@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function ProfileGate({ onEnter, profile }) {
+export default function ProfileGate({ onEnter, profile, canSkipPin }) {
   const [isEntering, setIsEntering] = useState(false);
   const [showPin, setShowPin] = useState(false);
   const [pin, setPin] = useState('');
@@ -8,7 +8,14 @@ export default function ProfileGate({ onEnter, profile }) {
   const [error, setError] = useState(false);
 
   const handleProfileClick = () => {
-    setShowPin(true);
+    if (canSkipPin) {
+      setIsEntering(true);
+      setTimeout(() => {
+        onEnter();
+      }, 400);
+    } else {
+      setShowPin(true);
+    }
   };
 
   const handleUnlock = (e) => {

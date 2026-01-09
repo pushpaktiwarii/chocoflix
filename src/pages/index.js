@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import ProfileGate from '../components/ProfileGate';
 import Navbar from '../components/Navbar';
@@ -12,6 +12,23 @@ export default function Home() {
     const [hasEntered, setHasEntered] = useState(false);
     const [showDetailModal, setShowDetailModal] = useState(false);
     const [playerState, setPlayerState] = useState({ isOpen: false, items: [], initialIndex: 0 });
+    const [canSkipPin, setCanSkipPin] = useState(false);
+
+    useEffect(() => {
+        const loginTime = localStorage.getItem('loginTime');
+        if (loginTime) {
+            const now = new Date().getTime();
+            // If logged in within last 10 minutes (600000 ms), can skip PIN
+            if (now - parseInt(loginTime) < 600000) {
+                setCanSkipPin(true);
+            }
+        }
+    }, []);
+
+    const handleEnter = () => {
+        setHasEntered(true);
+        localStorage.setItem('loginTime', new Date().getTime().toString());
+    };
 
     const handleCardClick = (items, index) => {
         setPlayerState({ isOpen: true, items, initialIndex: index });
@@ -34,7 +51,11 @@ export default function Home() {
             </Head>
 
             {!hasEntered ? (
-                <ProfileGate profile={profile} onEnter={() => setHasEntered(true)} />
+                <ProfileGate
+                    profile={profile}
+                    onEnter={handleEnter}
+                    canSkipPin={canSkipPin}
+                />
             ) : (
                 <main>
                     <Navbar />

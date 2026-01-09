@@ -5,11 +5,15 @@
 ## Features
 
 - **Profile Gate & Security:** "Who's watching?" style profile selection with a Netflix-inspired PIN protection screen (Single input, visibility toggle, dark mode).
+- **Smart Session Persistence:** Remembers user login for 10 minutes to bypass PIN on re-entry, while still showing the profile selector for that premium feel.
 - **Immersive Hero Banner:** Dynamic background with "100% Match" and top-tier metadata, featuring a "Play" button that launches the first memory.
 - **"To My People" Collection:** A curated list of memories presented as a clean, text-first playlist.
-- **Video Playback:** Seamless video streaming powered by **Mux**, with a custom fullscreen player experience.
+- **Video Playback:** Seamless video streaming powered by **Mux**, with a custom fullscreen player.
+- **Refined Mobile Experience:**
+  - Optimized video player controls for touch (circular, glassmorphism buttons).
+  - Responsive layout adjustments for modals and navigation.
+  - "Jitter-free" interactive elements.
 - **Detail Modal:** A premium popup for deep-diving into memory details and launching episodes.
-- **Responsive Design:** Optimized for both desktop and mobile viewing.
 
 ## Tech Stack
 
