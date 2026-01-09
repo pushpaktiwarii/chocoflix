@@ -35,6 +35,14 @@ export default function Row({ title, items, isLargeRow, onCardClick }) {
            .row-title { font-size: 1.5rem; }
         }
 
+        @media (max-width: 768px) {
+           .row-title {
+              font-size: 1.25rem; /* ~20px, much more readable on mobile */
+              font-weight: 600;
+              margin-bottom: 0.5rem;
+           }
+        }
+
         .row-posters {
           display: flex;
           overflow-y: hidden;
