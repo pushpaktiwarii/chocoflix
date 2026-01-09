@@ -156,8 +156,21 @@ export default function Hero({ content, onMoreInfoClick, onPlay }) {
         }
 
         @media (max-width: 768px) {
-          .hero-content { width: 100%; background: linear-gradient(0deg, #141414 20%, transparent); justify-content: flex-end; padding-bottom: 30%; }
-          .hero-title { font-size: 2.5rem; }
+          .hero {
+            height: 65vh; /* Reduced height to show more of landscape image */
+            background-position: top center;
+          }
+          .hero-content { 
+            width: 100%; 
+            background: linear-gradient(0deg, #141414 10%, transparent); 
+            justify-content: flex-end; 
+            padding-bottom: 20px;
+            padding-left: 20px;
+          }
+          .hero-title { font-size: 2.2rem; }
+          .hero-desc { display: none; } /* Hide description on mobile for cleaner look */
+          .meta-data { font-size: 0.9rem; }
+          .btn { padding: 0.5rem 1.2rem; font-size: 1rem; }
         }
       `}</style>
     </header>
