@@ -21,7 +21,7 @@ export const rows = [
     items: [
       {
         id: 1,
-        title: "19th B'day",
+        title: "B'day wala din",
         description: "and life felt light — bas doston ki wajah se.",
         image: null,
         playbackId: "ueBb6ADtT4hTo8nZdV9800l8oHfjKz7jVYc3qckunimk", // Example ID, user to replace

@@ -160,28 +160,36 @@ export default function VideoPlayerModal({ initialIndex, items, onClose }) {
 
                 .nav-btn {
                     pointer-events: auto;
-                    background: rgba(0,0,0,0.6);
+                    background: rgba(0, 0, 0, 0.5);
                     color: white;
-                    border: none;
-                    font-size: 3rem;
+                    border: 2px solid rgba(255, 255, 255, 0.3);
+                    font-size: 2rem;
                     cursor: pointer;
-                    padding: 20px;
-                    border-radius: 8px;
-                    transition: transform 0.2s, background 0.2s;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    transition: all 0.2s ease;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    position: absolute; /* Force to sides */
+                    position: absolute;
                     top: 50%;
                     transform: translateY(-50%);
+                    backdrop-filter: blur(4px);
+                    padding: 0;
                 }
 
                 .prev { left: 40px; }
                 .next { right: 40px; }
 
                 .nav-btn:hover {
-                    background: rgba(255,255,255,0.2);
-                    transform: scale(1.1);
+                    background: rgba(255, 255, 255, 0.2);
+                    border-color: white;
+                    transform: translateY(-50%) scale(1.1);
+                }
+
+                .nav-btn:active {
+                    transform: translateY(-50%) scale(0.95);
                 }
 
                 .info-overlay {
@@ -199,12 +207,14 @@ export default function VideoPlayerModal({ initialIndex, items, onClose }) {
                     margin-bottom: 0.5rem;
                     color: white;
                     font-weight: 700;
+                    line-height: 1.2;
                 }
                 
                 .info-overlay p {
                     font-size: 1.1rem;
                     color: #ddd;
                     max-width: 500px;
+                    line-height: 1.4;
                 }
                 
                 .no-video {
@@ -218,6 +228,52 @@ export default function VideoPlayerModal({ initialIndex, items, onClose }) {
                 .no-video img {
                     max-height: 50vh;
                     margin-bottom: 20px;
+                }
+
+                /* Mobile Responsiveness */
+                @media (max-width: 768px) {
+                    .close-btn {
+                        top: 20px;
+                        right: 20px;
+                        width: 36px;
+                        height: 36px;
+                        font-size: 18px;
+                        background: rgba(0,0,0,0.3);
+                        border-width: 1.5px;
+                    }
+
+                    .info-overlay {
+                        top: 20px;
+                        left: 20px;
+                        right: 60px; /* Space for close button */
+                        max-width: none;
+                        width: auto;
+                    }
+
+                    .info-overlay h3 {
+                        font-size: 1.5rem;
+                        margin-bottom: 0.3rem;
+                    }
+
+                    .info-overlay p {
+                        font-size: 0.9rem;
+                        max-width: 100%;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                    }
+
+                    .nav-btn {
+                        width: 40px;
+                        height: 40px;
+                        font-size: 1.5rem;
+                        background: rgba(0,0,0,0.3);
+                        padding: 0;
+                    }
+
+                    .prev { left: 10px; }
+                    .next { right: 10px; }
                 }
             `}</style>
         </div>

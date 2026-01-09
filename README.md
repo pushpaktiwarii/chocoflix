@@ -26,4 +26,4 @@
 4.  Open `http://localhost:3000`.
 
 ---
-*Created with ❤️ for the future.*
+*Created with ❤️ for the future. :p*
